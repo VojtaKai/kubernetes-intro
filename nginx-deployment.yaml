@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-nginx
+  template:
+    metadata:
+      labels:
+        app: my-nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          envFrom:
+            - configMapRef:
+                name: my-configmap
+          env:
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: my-secret
+                key: DB_PASSWORD
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: "1"
+            requests:
+              memory: 256Mi
+              cpu: "0.2"
