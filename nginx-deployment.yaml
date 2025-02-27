@@ -28,8 +28,27 @@ spec:
             - containerPort: 80
           resources:
             limits:
+              memory: 1Gi
+              cpu: "2"
+            requests:
               memory: 512Mi
               cpu: "1"
-            requests:
-              memory: 256Mi
-              cpu: "0.2"
+          volumeMounts:
+            - mountPath: "/usr/share/nginx/html"
+              name: nginx-storage
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 80
+          #   initialDelaySeconds: 20
+          #   periodSeconds: 5
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 80
+          #   initialDelaySeconds: 15
+          #   periodSeconds: 5
+      volumes:
+        - name: nginx-storage
+          persistentVolumeClaim:
+            claimName: nginx-pvc

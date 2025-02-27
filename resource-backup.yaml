@@ -1,0 +1,1616 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2025-02-21T15:37:05Z"
+    generateName: my-nginx-7fc4745966-
+    labels:
+      app: my-nginx
+      pod-template-hash: 7fc4745966
+    name: my-nginx-7fc4745966-9wwvl
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: my-nginx-7fc4745966
+      uid: c1219c81-04d9-4fb9-9a83-283362117c38
+    resourceVersion: "56148"
+    uid: 9d2dd271-223c-4092-8f98-1242052c0bf3
+  spec:
+    containers:
+    - env:
+      - name: DB_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            key: DB_PASSWORD
+            name: my-secret
+      envFrom:
+      - configMapRef:
+          name: my-configmap
+      image: nginx:latest
+      imagePullPolicy: Always
+      name: nginx
+      ports:
+      - containerPort: 80
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "2"
+          memory: 1Gi
+        requests:
+          cpu: "1"
+          memory: 512Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /usr/share/nginx/html
+        name: nginx-storage
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-blktp
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: minikube
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: nginx-storage
+      persistentVolumeClaim:
+        claimName: nginx-pvc
+    - name: kube-api-access-blktp
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-21T15:37:08Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-21T15:37:05Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-21T15:37:08Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-21T15:37:08Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-21T15:37:05Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://a61c03b276e6b502b1d4fc251c3c4eb8b0f466cdde934153f140093c111e085e
+      image: nginx:latest
+      imageID: docker-pullable://nginx@sha256:91734281c0ebfc6f1aea979cffeed5079cfe786228a71cc6f1f46a228cde6e34
+      lastState: {}
+      name: nginx
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-02-21T15:37:08Z"
+      volumeMounts:
+      - mountPath: /usr/share/nginx/html
+        name: nginx-storage
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-blktp
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.49.2
+    hostIPs:
+    - ip: 192.168.49.2
+    phase: Running
+    podIP: 10.244.0.47
+    podIPs:
+    - ip: 10.244.0.47
+    qosClass: Burstable
+    startTime: "2025-02-21T15:37:05Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2025-02-21T15:37:08Z"
+    generateName: my-nginx-7fc4745966-
+    labels:
+      app: my-nginx
+      pod-template-hash: 7fc4745966
+    name: my-nginx-7fc4745966-bvdrq
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: my-nginx-7fc4745966
+      uid: c1219c81-04d9-4fb9-9a83-283362117c38
+    resourceVersion: "56185"
+    uid: d435df42-1ee1-4186-b589-2139a2c7f209
+  spec:
+    containers:
+    - env:
+      - name: DB_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            key: DB_PASSWORD
+            name: my-secret
+      envFrom:
+      - configMapRef:
+          name: my-configmap
+      image: nginx:latest
+      imagePullPolicy: Always
+      name: nginx
+      ports:
+      - containerPort: 80
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "2"
+          memory: 1Gi
+        requests:
+          cpu: "1"
+          memory: 512Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /usr/share/nginx/html
+        name: nginx-storage
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-dsk69
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: minikube
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: nginx-storage
+      persistentVolumeClaim:
+        claimName: nginx-pvc
+    - name: kube-api-access-dsk69
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-21T15:37:11Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-21T15:37:08Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-21T15:37:11Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-21T15:37:11Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-21T15:37:08Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://4bf572dc75b267ed746dd65560aaaf5367c76a446572f2dd7fe605a6f99c4ad5
+      image: nginx:latest
+      imageID: docker-pullable://nginx@sha256:91734281c0ebfc6f1aea979cffeed5079cfe786228a71cc6f1f46a228cde6e34
+      lastState: {}
+      name: nginx
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-02-21T15:37:11Z"
+      volumeMounts:
+      - mountPath: /usr/share/nginx/html
+        name: nginx-storage
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-dsk69
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.49.2
+    hostIPs:
+    - ip: 192.168.49.2
+    phase: Running
+    podIP: 10.244.0.48
+    podIPs:
+    - ip: 10.244.0.48
+    qosClass: Burstable
+    startTime: "2025-02-21T15:37:08Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2025-02-21T15:37:11Z"
+    generateName: my-nginx-7fc4745966-
+    labels:
+      app: my-nginx
+      pod-template-hash: 7fc4745966
+    name: my-nginx-7fc4745966-dl89p
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: my-nginx-7fc4745966
+      uid: c1219c81-04d9-4fb9-9a83-283362117c38
+    resourceVersion: "56219"
+    uid: e6cc3ac8-6fb6-42f6-978b-3da76f2a9e0a
+  spec:
+    containers:
+    - env:
+      - name: DB_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            key: DB_PASSWORD
+            name: my-secret
+      envFrom:
+      - configMapRef:
+          name: my-configmap
+      image: nginx:latest
+      imagePullPolicy: Always
+      name: nginx
+      ports:
+      - containerPort: 80
+        protocol: TCP
+      resources:
+        limits:
+          cpu: "2"
+          memory: 1Gi
+        requests:
+          cpu: "1"
+          memory: 512Mi
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /usr/share/nginx/html
+        name: nginx-storage
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-cbnnz
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: minikube
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: nginx-storage
+      persistentVolumeClaim:
+        claimName: nginx-pvc
+    - name: kube-api-access-cbnnz
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-21T15:37:13Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-21T15:37:11Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-21T15:37:13Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-21T15:37:13Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-21T15:37:11Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://bc4101dee0331f08febd5a0d3a3bb0cd10968a74a169715f23e1f7de169e63fc
+      image: nginx:latest
+      imageID: docker-pullable://nginx@sha256:91734281c0ebfc6f1aea979cffeed5079cfe786228a71cc6f1f46a228cde6e34
+      lastState: {}
+      name: nginx
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-02-21T15:37:13Z"
+      volumeMounts:
+      - mountPath: /usr/share/nginx/html
+        name: nginx-storage
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-cbnnz
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.49.2
+    hostIPs:
+    - ip: 192.168.49.2
+    phase: Running
+    podIP: 10.244.0.49
+    podIPs:
+    - ip: 10.244.0.49
+    qosClass: Burstable
+    startTime: "2025-02-21T15:37:11Z"
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2025-02-23T11:14:53Z"
+    generateName: mysql-
+    labels:
+      app: mysql
+      apps.kubernetes.io/pod-index: "0"
+      controller-revision-hash: mysql-dc6ff9445
+      statefulset.kubernetes.io/pod-name: mysql-0
+    name: mysql-0
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: StatefulSet
+      name: mysql
+      uid: b20056d9-3d4e-4ce0-a350-e7a7865f8549
+    resourceVersion: "195997"
+    uid: f93e5a38-4110-4fb2-9a1e-06ddd39556ce
+  spec:
+    containers:
+    - env:
+      - name: MYSQL_ROOT_PASSWORD
+        value: password
+      image: mysql:5.7
+      imagePullPolicy: IfNotPresent
+      name: mysql
+      ports:
+      - containerPort: 3306
+        protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/lib/mysql
+        name: mysql-storage
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-kz9k6
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    hostname: mysql-0
+    nodeName: minikube
+    preemptionPolicy: PreemptLowerPriority
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    subdomain: mysql
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: mysql-storage
+      persistentVolumeClaim:
+        claimName: mysql-storage-mysql-0
+    - name: kube-api-access-kz9k6
+      projected:
+        defaultMode: 420
+        sources:
+        - serviceAccountToken:
+            expirationSeconds: 3607
+            path: token
+        - configMap:
+            items:
+            - key: ca.crt
+              path: ca.crt
+            name: kube-root-ca.crt
+        - downwardAPI:
+            items:
+            - fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+              path: namespace
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-23T11:15:18Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-23T11:14:55Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-23T11:15:18Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-23T11:15:18Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-23T11:14:55Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://27a02fc851c7ec8b336bb64817ba920bd98bb9610b0e0c9fbb54ca4f1d932ba3
+      image: mysql:5.7
+      imageID: docker-pullable://mysql@sha256:4bc6bc963e6d8443453676cae56536f4b8156d78bae03c0145cbe47c2aad73bb
+      lastState: {}
+      name: mysql
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-02-23T11:15:17Z"
+      volumeMounts:
+      - mountPath: /var/lib/mysql
+        name: mysql-storage
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: kube-api-access-kz9k6
+        readOnly: true
+        recursiveReadOnly: Disabled
+    hostIP: 192.168.49.2
+    hostIPs:
+    - ip: 192.168.49.2
+    phase: Running
+    podIP: 10.244.0.50
+    podIPs:
+    - ip: 10.244.0.50
+    qosClass: BestEffort
+    startTime: "2025-02-23T11:14:55Z"
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2025-02-18T16:59:57Z"
+    labels:
+      component: apiserver
+      provider: kubernetes
+    name: kubernetes
+    namespace: default
+    resourceVersion: "196"
+    uid: 9f276e3a-c152-4ce7-a0c5-c37784d161bf
+  spec:
+    clusterIP: 10.96.0.1
+    clusterIPs:
+    - 10.96.0.1
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 8443
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"my-nginx-service","namespace":"default"},"spec":{"ports":[{"nodePort":30100,"port":80,"protocol":"TCP","targetPort":80}],"selector":{"app":"my-nginx"},"type":"NodePort"}}
+    creationTimestamp: "2025-02-18T20:58:25Z"
+    name: my-nginx-service
+    namespace: default
+    resourceVersion: "66446"
+    uid: 9fc5d92e-b368-4c8a-85f5-c4be47c6d191
+  spec:
+    clusterIP: 10.109.36.113
+    clusterIPs:
+    - 10.109.36.113
+    externalTrafficPolicy: Cluster
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - nodePort: 30100
+      port: 80
+      protocol: TCP
+      targetPort: 80
+    selector:
+      app: my-nginx
+    sessionAffinity: None
+    type: NodePort
+  status:
+    loadBalancer: {}
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "20"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"name":"my-nginx","namespace":"default"},"spec":{"replicas":3,"selector":{"matchLabels":{"app":"my-nginx"}},"template":{"metadata":{"labels":{"app":"my-nginx"}},"spec":{"containers":[{"env":[{"name":"DB_PASSWORD","valueFrom":{"secretKeyRef":{"key":"DB_PASSWORD","name":"my-secret"}}}],"envFrom":[{"configMapRef":{"name":"my-configmap"}}],"image":"nginx:latest","name":"nginx","ports":[{"containerPort":80}],"resources":{"limits":{"cpu":"2","memory":"1Gi"},"requests":{"cpu":"1","memory":"512Mi"}},"volumeMounts":[{"mountPath":"/usr/share/nginx/html","name":"nginx-storage"}]}],"volumes":[{"name":"nginx-storage","persistentVolumeClaim":{"claimName":"nginx-pvc"}}]}}}}
+    creationTimestamp: "2025-02-18T17:05:44Z"
+    generation: 25
+    labels:
+      app: my-nginx
+    name: my-nginx
+    namespace: default
+    resourceVersion: "56233"
+    uid: fa93d82d-01a9-43bd-a0e7-0e2aeb59cf94
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 3
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: my-nginx
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: my-nginx
+      spec:
+        containers:
+        - env:
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: DB_PASSWORD
+                name: my-secret
+          envFrom:
+          - configMapRef:
+              name: my-configmap
+          image: nginx:latest
+          imagePullPolicy: Always
+          name: nginx
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "2"
+              memory: 1Gi
+            requests:
+              cpu: "1"
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /usr/share/nginx/html
+            name: nginx-storage
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: nginx-storage
+          persistentVolumeClaim:
+            claimName: nginx-pvc
+  status:
+    availableReplicas: 3
+    conditions:
+    - lastTransitionTime: "2025-02-21T10:52:57Z"
+      lastUpdateTime: "2025-02-21T10:52:57Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2025-02-21T10:52:55Z"
+      lastUpdateTime: "2025-02-21T15:37:13Z"
+      message: ReplicaSet "my-nginx-7fc4745966" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 25
+    readyReplicas: 3
+    replicas: 3
+    updatedReplicas: 3
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "4"
+      deployment.kubernetes.io/revision: "5"
+      deployment.kubernetes.io/revision-history: "3"
+    creationTimestamp: "2025-02-20T13:11:58Z"
+    generation: 6
+    labels:
+      app: my-nginx
+      pod-template-hash: 57cf46c999
+    name: my-nginx-57cf46c999
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: my-nginx
+      uid: fa93d82d-01a9-43bd-a0e7-0e2aeb59cf94
+    resourceVersion: "21611"
+    uid: e1899c03-a111-456c-9158-2d59c2f1dcb9
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: my-nginx
+        pod-template-hash: 57cf46c999
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: my-nginx
+          pod-template-hash: 57cf46c999
+      spec:
+        containers:
+        - image: nginx:1.25
+          imagePullPolicy: Always
+          name: nginx
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 6
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "4"
+      deployment.kubernetes.io/revision: "6"
+      deployment.kubernetes.io/revision-history: "4"
+    creationTimestamp: "2025-02-20T14:51:38Z"
+    generation: 8
+    labels:
+      app: my-nginx
+      pod-template-hash: 57dc7b88bc
+    name: my-nginx-57dc7b88bc
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: my-nginx
+      uid: fa93d82d-01a9-43bd-a0e7-0e2aeb59cf94
+    resourceVersion: "30639"
+    uid: 51abda4f-9f55-4022-94f9-50a8f09896e6
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: my-nginx
+        pod-template-hash: 57dc7b88bc
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: my-nginx
+          pod-template-hash: 57dc7b88bc
+      spec:
+        containers:
+        - env:
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: DB_PASSWORD
+                name: my-secret
+          envFrom:
+          - configMapRef:
+              name: my-configmap
+          image: nginx:latest
+          imagePullPolicy: Always
+          name: nginx
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 512Mi
+            requests:
+              cpu: 200m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 8
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "4"
+      deployment.kubernetes.io/revision: "19"
+    creationTimestamp: "2025-02-21T15:35:09Z"
+    generation: 6
+    labels:
+      app: my-nginx
+      pod-template-hash: 594c997fc9
+    name: my-nginx-594c997fc9
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: my-nginx
+      uid: fa93d82d-01a9-43bd-a0e7-0e2aeb59cf94
+    resourceVersion: "56232"
+    uid: 89a1b721-929a-49fa-8bdd-86a886193324
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: my-nginx
+        pod-template-hash: 594c997fc9
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: my-nginx
+          pod-template-hash: 594c997fc9
+      spec:
+        containers:
+        - env:
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: DB_PASSWORD
+                name: my-secret
+          envFrom:
+          - configMapRef:
+              name: my-configmap
+          image: nginx:latest
+          imagePullPolicy: Always
+          name: nginx
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "2"
+              memory: 1Gi
+            requests:
+              cpu: "1"
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: nginx-storage
+          persistentVolumeClaim:
+            claimName: nginx-pvc
+  status:
+    observedGeneration: 6
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "4"
+      deployment.kubernetes.io/revision: "10"
+    creationTimestamp: "2025-02-20T18:10:18Z"
+    generation: 2
+    labels:
+      app: my-nginx
+      pod-template-hash: 66864b89c9
+    name: my-nginx-66864b89c9
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: my-nginx
+      uid: fa93d82d-01a9-43bd-a0e7-0e2aeb59cf94
+    resourceVersion: "31020"
+    uid: ec429513-b42c-4c9d-9ca8-ad2809d8ae76
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: my-nginx
+        pod-template-hash: 66864b89c9
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: my-nginx
+          pod-template-hash: 66864b89c9
+      spec:
+        containers:
+        - env:
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: DB_PASSWORD
+                name: my-secret
+          envFrom:
+          - configMapRef:
+              name: my-configmap
+          image: nginx:latest
+          imagePullPolicy: Always
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: 80
+              scheme: HTTP
+            initialDelaySeconds: 20
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: nginx
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: 80
+              scheme: HTTP
+            initialDelaySeconds: 3
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            limits:
+              cpu: "1"
+              memory: 512Mi
+            requests:
+              cpu: 200m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /usr/share/nginx/html
+            name: nginx-storage
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: nginx-storage
+          persistentVolumeClaim:
+            claimName: nginx-pvc
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "4"
+      deployment.kubernetes.io/revision: "2"
+    creationTimestamp: "2025-02-18T20:50:14Z"
+    generation: 8
+    labels:
+      app: my-nginx
+      pod-template-hash: 695c9f6944
+    name: my-nginx-695c9f6944
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: my-nginx
+      uid: fa93d82d-01a9-43bd-a0e7-0e2aeb59cf94
+    resourceVersion: "16673"
+    uid: 7293795d-e363-40c6-8d49-a7c7f42aeb58
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: my-nginx
+        pod-template-hash: 695c9f6944
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: my-nginx
+          pod-template-hash: 695c9f6944
+      spec:
+        containers:
+        - image: nginx:latest
+          imagePullPolicy: Always
+          name: nginx
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 8
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "4"
+      deployment.kubernetes.io/revision: "8"
+    creationTimestamp: "2025-02-20T18:08:03Z"
+    generation: 2
+    labels:
+      app: my-nginx
+      pod-template-hash: 6fff48ff98
+    name: my-nginx-6fff48ff98
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: my-nginx
+      uid: fa93d82d-01a9-43bd-a0e7-0e2aeb59cf94
+    resourceVersion: "30899"
+    uid: 4a194684-5137-464e-b661-39c8b4df4236
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: my-nginx
+        pod-template-hash: 6fff48ff98
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: my-nginx
+          pod-template-hash: 6fff48ff98
+      spec:
+        containers:
+        - env:
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: DB_PASSWORD
+                name: my-secret
+          envFrom:
+          - configMapRef:
+              name: my-configmap
+          image: nginx:latest
+          imagePullPolicy: Always
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: 80
+              scheme: HTTP
+            initialDelaySeconds: 3
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: nginx
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: 80
+              scheme: HTTP
+            initialDelaySeconds: 3
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            limits:
+              cpu: "1"
+              memory: 512Mi
+            requests:
+              cpu: 200m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /usr/share/nginx/html
+            name: nginx-storage
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: nginx-storage
+          persistentVolumeClaim:
+            claimName: nginx-pvc
+  status:
+    observedGeneration: 2
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "4"
+      deployment.kubernetes.io/revision: "17"
+    creationTimestamp: "2025-02-21T15:33:22Z"
+    generation: 6
+    labels:
+      app: my-nginx
+      pod-template-hash: 79b8d86c58
+    name: my-nginx-79b8d86c58
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: my-nginx
+      uid: fa93d82d-01a9-43bd-a0e7-0e2aeb59cf94
+    resourceVersion: "55883"
+    uid: cea07ff7-71fa-4e93-9546-52cc53337557
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: my-nginx
+        pod-template-hash: 79b8d86c58
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: my-nginx
+          pod-template-hash: 79b8d86c58
+      spec:
+        containers:
+        - env:
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: DB_PASSWORD
+                name: my-secret
+          envFrom:
+          - configMapRef:
+              name: my-configmap
+          image: nginx:latest
+          imagePullPolicy: Always
+          name: nginx
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 6
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "4"
+      deployment.kubernetes.io/revision: "15"
+      deployment.kubernetes.io/revision-history: 7,9,11,13
+    creationTimestamp: "2025-02-20T18:06:12Z"
+    generation: 6
+    labels:
+      app: my-nginx
+      pod-template-hash: 7f6ff6cc98
+    name: my-nginx-7f6ff6cc98
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: my-nginx
+      uid: fa93d82d-01a9-43bd-a0e7-0e2aeb59cf94
+    resourceVersion: "44413"
+    uid: 3778faff-2196-45d9-bf37-6019486ba285
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: my-nginx
+        pod-template-hash: 7f6ff6cc98
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: my-nginx
+          pod-template-hash: 7f6ff6cc98
+      spec:
+        containers:
+        - env:
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: DB_PASSWORD
+                name: my-secret
+          envFrom:
+          - configMapRef:
+              name: my-configmap
+          image: nginx:latest
+          imagePullPolicy: Always
+          name: nginx
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "1"
+              memory: 512Mi
+            requests:
+              cpu: 200m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /usr/share/nginx/html
+            name: nginx-storage
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: nginx-storage
+          persistentVolumeClaim:
+            claimName: nginx-pvc
+  status:
+    observedGeneration: 6
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "4"
+      deployment.kubernetes.io/revision: "20"
+      deployment.kubernetes.io/revision-history: "16"
+    creationTimestamp: "2025-02-21T12:03:13Z"
+    generation: 9
+    labels:
+      app: my-nginx
+      pod-template-hash: 7fc4745966
+    name: my-nginx-7fc4745966
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: my-nginx
+      uid: fa93d82d-01a9-43bd-a0e7-0e2aeb59cf94
+    resourceVersion: "56222"
+    uid: c1219c81-04d9-4fb9-9a83-283362117c38
+  spec:
+    replicas: 3
+    selector:
+      matchLabels:
+        app: my-nginx
+        pod-template-hash: 7fc4745966
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: my-nginx
+          pod-template-hash: 7fc4745966
+      spec:
+        containers:
+        - env:
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: DB_PASSWORD
+                name: my-secret
+          envFrom:
+          - configMapRef:
+              name: my-configmap
+          image: nginx:latest
+          imagePullPolicy: Always
+          name: nginx
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "2"
+              memory: 1Gi
+            requests:
+              cpu: "1"
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /usr/share/nginx/html
+            name: nginx-storage
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: nginx-storage
+          persistentVolumeClaim:
+            claimName: nginx-pvc
+  status:
+    availableReplicas: 3
+    fullyLabeledReplicas: 3
+    observedGeneration: 9
+    readyReplicas: 3
+    replicas: 3
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "4"
+      deployment.kubernetes.io/revision: "18"
+    creationTimestamp: "2025-02-21T15:34:25Z"
+    generation: 6
+    labels:
+      app: my-nginx
+      pod-template-hash: 85d8fc75c5
+    name: my-nginx-85d8fc75c5
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: my-nginx
+      uid: fa93d82d-01a9-43bd-a0e7-0e2aeb59cf94
+    resourceVersion: "56033"
+    uid: 4ffd1b95-aa9b-40d2-bab3-86c2a2891df2
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: my-nginx
+        pod-template-hash: 85d8fc75c5
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: my-nginx
+          pod-template-hash: 85d8fc75c5
+      spec:
+        containers:
+        - env:
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: DB_PASSWORD
+                name: my-secret
+          envFrom:
+          - configMapRef:
+              name: my-configmap
+          image: nginx:latest
+          imagePullPolicy: Always
+          name: nginx
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          resources:
+            limits:
+              cpu: "2"
+              memory: 1Gi
+            requests:
+              cpu: "1"
+              memory: 512Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    observedGeneration: 6
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "4"
+      deployment.kubernetes.io/revision: "14"
+      deployment.kubernetes.io/revision-history: "12"
+    creationTimestamp: "2025-02-20T18:12:58Z"
+    generation: 4
+    labels:
+      app: my-nginx
+      pod-template-hash: 894cf6c4b
+    name: my-nginx-894cf6c4b
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: my-nginx
+      uid: fa93d82d-01a9-43bd-a0e7-0e2aeb59cf94
+    resourceVersion: "40813"
+    uid: ebfbce60-d56f-4429-b7f6-bbde403b3960
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: my-nginx
+        pod-template-hash: 894cf6c4b
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: my-nginx
+          pod-template-hash: 894cf6c4b
+      spec:
+        containers:
+        - env:
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: DB_PASSWORD
+                name: my-secret
+          envFrom:
+          - configMapRef:
+              name: my-configmap
+          image: nginx:latest
+          imagePullPolicy: Always
+          name: nginx
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: 80
+              scheme: HTTP
+            initialDelaySeconds: 15
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            limits:
+              cpu: "1"
+              memory: 512Mi
+            requests:
+              cpu: 200m
+              memory: 256Mi
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /usr/share/nginx/html
+            name: nginx-storage
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: nginx-storage
+          persistentVolumeClaim:
+            claimName: nginx-pvc
+  status:
+    observedGeneration: 4
+    replicas: 0
+- apiVersion: apps/v1
+  kind: StatefulSet
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"StatefulSet","metadata":{"annotations":{},"name":"mysql","namespace":"default"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"mysql"}},"serviceName":"mysql","template":{"metadata":{"labels":{"app":"mysql"}},"spec":{"containers":[{"env":[{"name":"MYSQL_ROOT_PASSWORD","value":"password"}],"image":"mysql:5.7","name":"mysql","ports":[{"containerPort":3306}],"volumeMounts":[{"mountPath":"/var/lib/mysql","name":"mysql-storage"}]}]}},"volumeClaimTemplates":[{"metadata":{"name":"mysql-storage"},"spec":{"accessModes":["ReadWriteOnce"],"resources":{"requests":{"storage":"5Gi"}}}}]}}
+    creationTimestamp: "2025-02-23T11:14:53Z"
+    generation: 1
+    name: mysql
+    namespace: default
+    resourceVersion: "195998"
+    uid: b20056d9-3d4e-4ce0-a350-e7a7865f8549
+  spec:
+    persistentVolumeClaimRetentionPolicy:
+      whenDeleted: Retain
+      whenScaled: Retain
+    podManagementPolicy: OrderedReady
+    replicas: 1
+    revisionHistoryLimit: 10
+    selector:
+      matchLabels:
+        app: mysql
+    serviceName: mysql
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: mysql
+      spec:
+        containers:
+        - env:
+          - name: MYSQL_ROOT_PASSWORD
+            value: password
+          image: mysql:5.7
+          imagePullPolicy: IfNotPresent
+          name: mysql
+          ports:
+          - containerPort: 3306
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /var/lib/mysql
+            name: mysql-storage
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+    updateStrategy:
+      rollingUpdate:
+        partition: 0
+      type: RollingUpdate
+    volumeClaimTemplates:
+    - apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata:
+        creationTimestamp: null
+        name: mysql-storage
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 5Gi
+        volumeMode: Filesystem
+      status:
+        phase: Pending
+  status:
+    availableReplicas: 1
+    collisionCount: 0
+    currentReplicas: 1
+    currentRevision: mysql-dc6ff9445
+    observedGeneration: 1
+    readyReplicas: 1
+    replicas: 1
+    updateRevision: mysql-dc6ff9445
+    updatedReplicas: 1
+kind: List
+metadata:
+  resourceVersion: ""
